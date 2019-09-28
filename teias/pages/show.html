@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<style>
+    .filterable {
+    margin-top: 15px;
+}
+.filterable .panel-heading .pull-right {
+    margin-top: -20px;
+}
+.filterable .filters input[disabled] {
+    background-color: transparent;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+}
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]::-moz-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]:-ms-input-placeholder {
+    color: #333;
+}
+
+</style>
+
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <h2>Teias personel databese...</h2>
+    <hr>
+      <!---------------------KAYIT FORMU------------------------------------->
+
+{{x}}
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">YENİ KAYIT</button>
+
+<div id="id01" class="modal">
+
+  <form class="modal-content animate" action="/show_3/" method="get">
+    {% csrf_token %}
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>AD-SOYAD</b></label>
+      <input type="text" placeholder="AD-SOYAD" name="ad" required>
+
+      <label for="psw"><b>DEPARTMAN</b></label>
+      <input type="text" placeholder="DEPARTMAN" name="departman" required>
+
+         <label for="psw"><b>TÜR</b></label>
+      <input type="text" placeholder="TÜR" name="tür" required>
+
+         <label for="psw"><b>MARKA</b></label>
+      <input type="text" placeholder="MARKA" name="marka" required>
+
+         <label for="psw"><b>MODEL</b></label>
+      <input type="text" placeholder="MODEL" name="model" required>
+
+         <label for="psw"><b>SERİ_NO</b></label>
+      <input type="text" placeholder="SERİ_NO" name="seri_no" required>
+
+         <label for="psw"><b>LOKASYON</b></label>
+      <input type="text" placeholder="LOKASYON" name="lokasyon" required>
+
+         <label for="psw"><b>DURUM</b></label>
+      <input type="text" placeholder="DURUM" name="durum" required>
+
+
+      <button type="KAYDET">SEND</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+
+
+    </div>
+
+
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+
+
+    <!------------------------KAYIT FORMU BİTİŞ------------------------------------>
+
+
+    <form class="btn btn-success" action="/show/"> <button>YENİLE</button></form>
+
+
+    <form action="/show_2" method="get">
+     <!-- <p name="ek" id="sel"></p>-->
+
+         <input id="sel" name="ek" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+
+        <button class="btn btn-outline-secondary btn-success" type="submit">KAYDET</button>
+
+
+
+    </form>
+    <div class="row">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Users</h3>
+                <div class="pull-right">
+                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+                </div>
+            </div>
+            <div >
+            <table class="table" >
+                <thead>
+                    <tr class="filters">
+                         <th><input type="text" class="form-control" placeholder="İD" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="AD SOYAD" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="DEPARTMAN" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="TÜR" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="MARKA" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="MODEL" disabled></th>,
+                         <th><input type="text" class="form-control" placeholder="SERİ_NO" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="LOKASYON" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="DRM" disabled></th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo in liste %}
+                     <tr><div>
+                           <td >{{todo.id}} </td>
+                         <td > <div id="editor" class="row_data">  {{todo.EVENT.AD_SOYAD}}  </div>     </td>
+                         <td><div class="row_data">{{todo.EVENT.DEPARTMAN}}</div></td>
+                         <td><div  class="row_data">{{todo.TUR}}</div></td>
+                         <td><div class="row_data">{{todo.MARKA}}</div></td>
+                         <td><div class="row_data">{{todo.MODEL}}</div></td>
+                         <td><div class="row_data">{{todo.SERI_NO}}</div></td>
+                         <td><div class="row_data">{{todo.LOKASYON}}    </div></td>
+                         <td><div class="row_data">
+                             <select id="drm" onChange="myNewFunction(this)">
+                                    <option value="volvo">TAMİRDE</option>
+                                     <option value="saab">ÇALIŞIYOR</option>
+                                     <option value="vw">PARÇA BEKLİYO</option>
+                                     <option value="audi" selected>{{todo.DURUM}}</option>
+                                        </select>
+
+                             </div></td>
+                         <td><button id="selo" type="button" class="btn btn-success btn-edit" >  Edit</button></td>
+                        </div>
+
+                      </tr>
+
+{% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    </div>
+
+
+
+
+<script>
+
+
+
+//row select and make change
+$(document).on('click','.btn-edit',function(event)
+ {
+
+        event.preventDefault();
+        var tbl_row = $(this).closest('tr');
+
+
+       //make div editable
+		$(this).closest('tr').attr('contenteditable', 'true');$(this).closest('tr').attr('contenteditable', 'true');
+
+		//make the whole row editable
+		tbl_row.find('.row_data')
+		.attr('contenteditable', 'true')
+		.attr('edit_type', 'button')
+		.addClass('bg-success')
+		.css('padding','3px')
+
+
+
+ });
+
+
+
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+//kaydetme butonu click
+
+
+ function myNewFunction(sel) {
+
+$(document).on('click','.btn-edit',function(){
+    var a=$(this).closest('tr');
+    var element0=  $(a).find('td:eq(0)').text(); //İD
+    var element1 = $(a).find('td:eq(1)').text();  //AD-SOYAD
+    var element2 = $(a).find('td:eq(2)').text();  //DEPARTMAN
+
+    //seçilmiş elamı buluyo
+
+   var element3=sel.options[sel.selectedIndex].text;
+
+
+    document.getElementById("sel").value= element0+" / "+ element1+" / "+element2+" / "+element3
+
+});
+
+}
+
+$(document).on('click','.btn-edit',function(){
+    var a=$(this).closest('tr');
+    var element0=  $(a).find('td:eq(0)').text(); //İD
+    var element1 = $(a).find('td:eq(1)').text();  //AD-SOYAD
+    var element2 = $(a).find('td:eq(2)').text();  //DEPARTMAN
+
+    document.getElementById("sel").value= element0+" / "+ element1+" / "+element2
+
+});
+
+//search yapmak için
+    /*
+Please consider that the JS part isn't production ready at all, I just code it to show the concept of merging filters and titles together !
+*/
+$(document).ready(function(){
+    $('.filterable .btn-filter').click(function(){
+        var $panel = $(this).parents('.filterable'),
+        $filters = $panel.find('.filters input'),
+        $tbody = $panel.find('.table tbody');
+        if ($filters.prop('disabled') == true) {
+            $filters.prop('disabled', false);
+            $filters.first().focus();
+        } else {
+            $filters.val('').prop('disabled', true);
+            $tbody.find('.no-result').remove();
+            $tbody.find('tr').show();
+        }
+    });
+
+    $('.filterable .filters input').keyup(function(e){
+        /* Ignore tab key */
+        var code = e.keyCode || e.which;
+        if (code == '9') return;
+        /* Useful DOM data and selectors */
+        var $input = $(this),
+        inputContent = $input.val().toLowerCase(),
+        $panel = $input.parents('.filterable'),
+        column = $panel.find('.filters th').index($input.parents('th')),
+        $table = $panel.find('.table'),
+        $rows = $table.find('tbody tr');
+        /* Dirtiest filter function ever ;) */
+        var $filteredRows = $rows.filter(function(){
+            var value = $(this).find('td').eq(column).text().toLowerCase();
+            return value.indexOf(inputContent) === -1;
+        });
+        /* Clean previous no-result if exist */
+        $table.find('tbody .no-result').remove();
+        /* Show all rows, hide filtered ones (never do that outside of a demo ! xD) */
+        $rows.show();
+        $filteredRows.hide();
+        /* Prepend no-result row if all rows are filtered */
+        if ($filteredRows.length === $rows.length) {
+            $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">No result found</td></tr>'));
+        }
+    });
+
+});
+</script>
+</html>

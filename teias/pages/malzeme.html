@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Malzeme</title>
+<meta charset="UTF-8">
+<style>
+
+.selocan{
+  height: 450px !important;
+  overflow: auto;
+}
+
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+<!--- FOR PLOTLY -->
+<!-- Plotly.js -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+
+
+<!----FOR CAHRTJS-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!--jquery for data aniliz ı used-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src=" https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Malzeme<br>Durumu</b></h3>
+     {{a}}
+
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">☰</a>
+    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Çalısan</a>
+     {{a}}
+     {{a}}
+
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a>
+    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Bozuk</a>
+    <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Depo</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Company Name</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>Ekipman Analizi</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Çalışan Ekipmanlar.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+
+  <!-- Analiza  chartjs -->
+  <div class="w3-row-padding">
+    <div class="w3-half" style="background-color:powderblue;">
+         <canvas id="bar-chart" height="100" width="150"></canvas>
+    </div>
+
+    <div class="w3-half" style="background-color:powderblue;">
+          <canvas id="polar" height="100" width="150"></canvas>
+    </div>
+  </div>
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div class="w3-container" id="services" style="margin-top:75px">
+
+    <h1 class="w3-xxxlarge w3-text-red"><b>Services.</b></h1>
+      <div class="w3-row-padding">
+    <div class="w3-half" style="background-color:rgba(201, 76, 76, 0.3);">
+        <canvas id="doughnut-chart" height="130" width="150"></canvas>
+    </div>
+
+    <div class="w3-half" style="background-color:powderblue;">
+        <!-- plot ly fOR -->
+           <div id="myDiv" style="width:100%;height:100%"></div>
+    </div>
+  </div>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+    <p>Burda servisteki elektronik aletlerin analizini yapıyoruz...
+    </p>
+  </div>
+
+  <!-- Designers -->
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Bozuk Ekipmanlar.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+      <div class="w3-row-padding">
+
+              <!-- plot ly fOR -->
+             <canvas id="line-chart" width="800" height="450"></canvas>
+        <br><br>
+        <p>BOZUK EKİPMANLAR LİSTESİ</p>
+    <br>
+    <hr><hr>
+        <div class=" selocan" >
+
+         <table class="table" >
+                <thead>
+                    <tr class="filters">
+                         <th><input type="text" class="form-control" placeholder="İD" disabled></th>
+
+                         <th><input type="text" class="form-control" placeholder="TÜR" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="MARKA" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="MODEL" disabled></th>,
+                         <th><input type="text" class="form-control" placeholder="SERİ_NO" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="DRM" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="sebep" disabled></th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo in liste %}
+                     <tr><div>
+                           <td >{{todo.id}} </td>
+
+                         <td><div  class="row_data">{{todo.TUR}}</div></td>
+                         <td><div class="row_data">{{todo.MARKA}}</div></td>
+                         <td><div class="row_data">{{todo.MODEL}}</div></td>
+                         <td><div class="row_data">{{todo.SERI_NO}}</div></td>
+                         <td><div class="row_data">
+                             <select id="drm" onChange="myNewFunction(this)">
+                                    <option value="volvo">TAMİRDE</option>
+                                     <option value="saab">ÇALIŞIYOR</option>
+                                     <option value="vw">PARÇA BEKLİYO</option>
+                                     <option value="audi" selected>{{todo.DURUM}}</option>
+                                        </select></div></td>
+
+
+                         <td><div class="row_data">
+                             <select id="drm" onChange="myNewFunction(this)">
+                                    <option value="volvo">a</option>
+                                     <option value="saab">b</option>
+                                     <option value="vw">as BEKLİYO</option></select></div></td>
+
+                          <td><button id="kaldır" type="button" class="btn btn-success btn-edit" >KALDIR</button></td>
+                         <td><button id="arıza" type="button" class="btn btn-success btn-edit" >ARIZA KAYDI</button></td>
+                        </div>
+
+                      </tr>
+
+{% endfor %}
+                </tbody>
+            </table>
+
+  </div>
+
+
+
+  <!-- Packages / Pricing Tables -->
+  <div class="w3-container " id="packages" style="margin-top:75px">
+
+    <h1 class="w3-xxxlarge w3-text-red"><b>DEPO</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <hr><hr><hr>
+    <div class="selocan">
+    <table class="table" >
+                <thead>
+                    <tr class="filters">
+                         <th><input type="text" class="form-control" placeholder="İD" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="TÜR" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="MARKA" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="MODEL" disabled></th>,
+                         <th><input type="text" class="form-control" placeholder="SERİ_NO" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="DRM" disabled></th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo in liste %}
+                     <tr><div>
+                         <td >{{todo.id}} </td>
+                         <td><div  class="row_data">{{todo.TUR}}</div></td>
+                         <td><div class="row_data">{{todo.MARKA}}</div></td>
+                         <td><div class="row_data">{{todo.MODEL}}</div></td>
+                         <td><div class="row_data">{{todo.SERI_NO}}</div></td>
+                         <td><div class="row_data">
+                             <select id="drmm" onChange="myNewFunction(this)">
+                                    <option value="volvo">TAMİRDE</option>
+                                     <option value="saab">ÇALIŞIYOR</option>
+                                     <option value="vw">PARÇA BEKLİYO</option>
+                                     <option value="audi" selected>{{todo.DURUM}}</option>
+                                        </select>
+
+                             </div></td>
+                         <td><button id="" type="button" class="btn btn-success atama-id" >ATA</button></td>
+                        </div>
+
+                      </tr>
+
+{% endfor %}
+                </tbody>
+            </table>
+  </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Bize Mail Yollayabilirsiniz ..Selahattin AKSOY</p>
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>AD</label>
+        <input class="w3-input w3-border" type="text" name="Name" required>
+      </div>
+      <div class="w3-section">
+        <label>MAİL</label>
+        <input class="w3-input w3-border" type="text" name="Email" required>
+      </div>
+      <div class="w3-section">
+        <label>MESAJ</label>
+        <input class="w3-input w3-border" type="text" name="Message" required>
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">MESAJI YOLLA</button>
+    </form>
+  </div>
+          <!--------------------------------------------BUTON CLİCK EVENTLERİ-------------->
+
+    <!--******-->
+
+<div id="id01" class="modal">
+
+  <div class="modal-content animate" >
+
+    <div class="container">
+     <p>selahattin</p>
+    </div>
+
+    <div class="container">
+      <p>did it</p>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">KAPAT</button>
+
+    </div>
+  </div>
+</div>
+
+          <!----- atama id --->
+          <div id="id02" class="modal">
+
+  <div class="modal-content animate selocan" >
+
+    <div class="container">
+     <p>MALZEEME ATAMA </p>
+    </div>
+
+    <div class="container">
+      <p>MALZEMEYİ DEPODAN BİRİNE VER</p>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">KAPAT</button>
+
+    </div>
+  </div>
+</div>
+
+<!----arıza kaydı geçmişi table --->
+          <div id="id03" class="modal">
+
+  <div class="modal-content animate" >
+
+    <div class="container">
+     <p>ARIZA KAYDI GEÇMİŞİ</p>
+         <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">KAPAT</button>
+        <div class="selocan">
+    <table class="table" >
+                <thead>
+                    <tr class="filters">
+                         <th><input type="text" class="form-control" placeholder="İD" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="TÜR" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="MARKA" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="MODEL" disabled></th>,
+                         <th><input type="text" class="form-control" placeholder="SERİ_NO" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="ARIZA TARİHİ" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="ARIZASI" disabled></th>
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo in liste %}
+                     <tr><div>
+                         <td >{{todo.id}} </td>
+                         <td><div  class="row_data">{{todo.TUR}}</div></td>
+                         <td><div class="row_data">{{todo.MARKA}}</div></td>
+                         <td><div class="row_data">{{todo.MODEL}}</div></td>
+                         <td><div class="row_data">{{todo.SERI_NO}}</div></td>
+                          <td><div class="row_data">{{todo.MARKA}}</div></td>
+                         <td><div class="row_data">
+                             <select id="drmm" onChange="myNewFunction(this)">
+                                    <option value="volvo">FORMAT</option>
+                                     <option value="saab">HD</option>
+                                     <option value="vw">EKRAN</option>
+                                     <option value="audi" selected>{{todo.DURUM}}</option>
+                                        </select>
+
+                             </div></td>
+                         <td><button id="" type="button" class="btn btn-success atama-id" >ATA</button></td>
+                        </div>
+
+                      </tr>
+
+{% endfor %}
+                </tbody>
+            </table>
+  </div>
+  </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by SELAHATTİN AKSOY</a></p></div>
+
+      <script>
+$(document).on('click','#arıza',function(){
+    var a=$(this).closest('tr');
+    var b=  $(a).find('td:eq(4)').text(); //İD
+    document.getElementById('id03').style.display='block';
+
+
+
+});
+
+
+
+//ASSİGN CP TO PERSON FROM DEPO
+$(document).on('click','.atama-id',function(){
+    var a=$(this).closest('tr');
+    var b=  $(a).find('td:eq(4)').text(); //İD
+    document.getElementById('id02').style.display='block';
+
+
+});
+      </script>
+
+<script>
+
+
+new Chart(document.getElementById("line-chart").getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels:[{% for i in saglamAd %}"{{ i }}",{% endfor %}],
+      datasets: [
+        {
+          label: "SAYI",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#8e5ea2","#e8c3b9"],
+          data: [{% for i in saglam %}"{{ i }}",{% endfor %}],
+        }
+
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Bozuk Ekipmanlar'
+      }
+    }
+});
+
+
+
+
+
+
+
+new Chart(document.getElementById("doughnut-chart"), {
+    type: 'doughnut',
+    data: {
+      labels: [{% for i in tamAd %}"{{ i }}",{% endfor %}],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [{% for i in tam %}"{{ i }}",{% endfor %}]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Tamirdeki Elektronik Malzeme'
+      }
+    }
+});
+
+
+
+new Chart(document.getElementById("bar-chart").getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels:[{% for i in saglamAd %}"{{ i }}",{% endfor %}],
+      datasets: [
+        {
+          label: "SAYI",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#8e5ea2","#e8c3b9"],
+          data: [{% for i in saglam %}"{{ i }}",{% endfor %}],
+        }
+
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Çalışan Ekipmanlar'
+      }
+    }
+});
+
+
+
+
+new Chart(document.getElementById("polar"), {
+    type: 'polarArea',
+    data: {
+      labels:[{% for i in saglamAd %}"{{ i }}",{% endfor %}],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [{% for i in saglam %}"{{ i }}",{% endfor %}],
+        }
+      ]
+    },
+    options: {
+       legend: { onClick:alertBox,},
+      title: {
+        display: true,
+        text: 'çalışan ekipmanal',
+      }
+    }
+});
+
+function alertBox(){
+
+  document.getElementById('id01').style.display='block';
+}
+</script>
+
+
+<script>
+
+
+
+
+// Script to open and close sidebar
+function w3_open() {
+
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+
+
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="{% static 'js/scripts.js' %}"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Main_Page</title>
+
+  <link rel="stylesheet" href="css/demo-styles.css" />
+  <script src="js/modernizr-1.5.min.js"></script>
+
+    <link rel="stylesheet" type="text/css"  href="{% static 'css/demo-styles.css' %}">
+
+</head>
+
+<body>
+
+ <header>
+   <a href="http://sarasoueidan.com/blog/windows8-animations/" class="tutorial-link">Teiaş</a>
+ </header>
+  <!--===============================Start Demo====================================================-->
+<div class="demo-wrapper">
+<!-- classnames for the pages should include: 1) type of page 2) page name-->
+  <div class="s-page random-restored-page">
+    <h2 class="page-title">Some minimized App</h2>
+    <div class="close-button s-close-button">x</div>
+  </div>
+  <div class="s-page custom-page">
+    <h2 class="page-title">Thank You!</h2>
+    <div class="close-button s-close-button">x</div>
+  </div>
+  <div class="r-page random-r-page">
+
+
+    <div class="close-button r-close-button">x</div>
+  </div>
+<!--each tile should specify what page type it opens (to determine which animation) and the corresponding page name it should open-->
+  <div class="dashboard clearfix">
+    <ul class="tiles">
+      <div class="col1 clearfix">
+        <li class="tile tile-big tile-1 slideTextUp " data-page-type="r-page" data-page-name="random-r-page">
+          <div ><p class="fa fa-university"> Departmanlar</p></div>
+
+          <div>  <a href="char"><p class="fa fa-bolt"> Teiaş Departmanlar</p> </a></div>
+
+        </li>
+        <li class="tile tile-small tile tile-2" data-page-type="s-page" data-page-name ="random-restored-page">
+          <div><p class="icon-arrow-right"></p></div>
+          <div><br><a href="/malzeme/"> <h3 style="color:powderblue;">MALZEME DURUMU</h3></a></div>
+
+        </li>
+        <li class="tile tile-small last tile-3" data-page-type="r-page" data-page-name="random-r-page">
+          <p class="icon-calendar-alt-fill"></p>
+        </li>
+        <li class="tile tile-big tile-4 fig-tile" data-page-type="r-page" data-page-name="random-r-page">
+          <figure>
+            <!--image -->
+            <figcaption class="tile-caption caption-left">Ekleme yap</figcaption>
+          </figure>
+        </li>
+      </div>
+
+      <div class="col2 clearfix">
+        <li class="tile tile-big tile-5" data-page-type="r-page" data-page-name="random-r-page">
+          <div><p><a href="\admin\"> <span class="fa fa-database"></span></a>Admin</p></div>
+
+        </li>
+        <li class="tile tile-big tile-6 slideTextLeft" data-page-type="r-page" data-page-name="random-r-page">
+          <div><p><span class="fa fa-briefcase"></span>Personel</p></div>
+          <div> <a href="/show"> <p>Personel Listesi</p></a></div>
+        </li>
+        <!--Tiles with a 3D effect should have the following structure:
+            1) a container inside the tile with class of .faces
+            2) 2 figure elements, one with class .front and the other with class .back-->
+        <li class="tile tile-small tile-7 rotate3d rotate3dX" data-page-type="r-page" data-page-name="random-r-page">
+          <div class="faces" >
+            <div class="front"><span class="icon-picassa" ></span></div>
+            <a href="dosya/"> <div class="back"><p>Dosya Ekleme</p></div></a>
+          </div>
+        </li>
+        <li class="tile tile-small last tile-8 rotate3d rotate3dY" data-page-type="r-page" data-page-name="random-r-page">
+          <div class="faces">
+            <div class="front"><span class="fa fa-envelope"></span></div>
+            <a  href="/mail"><div class="back"><p>Mail Yolla...</p></div></a>
+          </div>
+        </li>
+      </div>
+
+      <div class="col3 clearfix">
+        <li class="tile tile-2xbig tile-9 fig-tile" data-page-type="custom-page" data-page-name="random-r-page">
+          {% load static %}
+
+
+          <div class="tile-caption caption-bottom">Bu Wep Database SELAHATTIN AKSOY'un TEIAS 18.Bölge MUD. Elektronik ve Bilgi Sistemlerine Hediyesidir...</div>
+
+          <figure>
+            <figcaption class="tile-caption caption-bottom">Kodlama ve Tasarımı Tamamı Selahattin Aksoy'a Aittir Kullanmayın Hacklerim..
+            </figure>
+        </li>
+        <li class="tile tile-big tile-10" data-page-type="s-page" data-page-name="custom-page">
+          <p>Eren Buzpınar </p>
+          <div> <p>Teias Elektronik ve Bilgi Sistemleri ELEKTRONIK MUH. Tel:23211421</p></div>
+        </li>
+      </div>
+    </ul>
+  </div><!--end dashboard-->
+
+</div>
+<!--====================================end demo wrapper================================================-->
+  <script src="{% static 'js/jquery-1.8.2.min.js' %}"></script>
+  <script src="{% static 'js/modernizr-1.5.min.js' %}"></script>
+
+
+</body>
+</html>

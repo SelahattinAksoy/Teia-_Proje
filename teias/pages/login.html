@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+ <link rel="stylesheet"  href="{% static 'css/index.css' %}">
+
+</head>
+<body >
+
+<h2  id="white">TEIAS Login Form</h2>
+<p id="white">This Website for TEIAS Personals,you have to person id for login...</p>
+
+<div class="container">
+  <form action="/main" method="get">
+    {% csrf_token %}
+    <div class="row">
+      <h2 style="text-align:center">Login to TEIAS Database</h2>
+      <div class="vl">
+        <span class="vl-innertext">or</span>
+      </div>
+
+      <div class="col">
+        <a href="#" class="fb btn">
+          <i class="fa fa-facebook fa-fw"></i> Follow Teiaş Facebook
+         </a>
+        <a href="#" class="twitter btn">
+          <i class="fa fa-twitter fa-fw"></i> Follow Teiaş Twitter
+        </a>
+        <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+          </i> Follow Teiaş Google+
+        </a>
+      </div>
+
+
+      <div class="col">
+        <div class="hide-md-lg">
+          <p>Or sign in manually:</p>
+        </div>
+        <form method="get",action="main/">
+          {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="submit" value="Login">
+          <p>{{val1}}</p>
+        </form>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+<div class="bottom-container">
+  <div class="row">
+    <div class="col">
+      <a href="#" style="color:white" class="btn">Sign up</a>
+    </div>
+    <div class="col">
+      <a href="#" style="color:white" class="btn">Forgot password?</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body>
+
+
+
+</html>

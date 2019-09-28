@@ -1,0 +1,19 @@
+body {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  font-family: 'Anton', sans-serif;
+  justify-content: center;
+  align-items: center;
+  perspective: 600px;
+}
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+
+  margin-left:50px;
+  margin-right:23px;
+}

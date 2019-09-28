@@ -1,0 +1,9 @@
+
+My main working is views.py and url.py that ı wrote whole code myself without any internet or mentor help.
+
+Html side is I get help from internet or github and mostly stakoverflow for making flexable html page I said in my raport this tool like bootsrap w3school(ı get one temple from here for adding file)
+
+
+I did some arrangement on html css js part but it's not my uzmanlık lanım ..I mainly worked on views.py  ...
+
+I checked some project or stackover code for html side ...
